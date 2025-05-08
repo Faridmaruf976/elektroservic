@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElektroServis - Jasa Perbaikan Peralatan Rumah Tangga</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            min-height: 80vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.jsdelivr.net/gh/tailwindlabs/heroicons@0.4.0/optimized/outline/cog.svg');
+            opacity: 0.05;
+            animation: rotate 80s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            transition: all 0.5s ease;
+            font-size: 48px;
+            color: #2563eb;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.2);
+            color: #f97316;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, #2563eb, #f97316);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .counter-box {
+            transition: all 0.5s ease;
+        }
+        
+        .counter-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: linear-gradient(90deg, #2563eb, #f97316);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .icon-box {
+            transform-origin: center;
+            transition: all 0.5s ease;
+        }
+        
+        .icon-box:hover {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <div class="flex items-center">
+                <div class="text-3xl font-bold text-blue-700">Elektro<span class="text-orange-500">Servis</span></div>
+            </div>
+            
+            <nav class="hidden md:flex">
+                <ul class="flex space-x-8">
+                    <li><a href="#home" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300">Beranda</a></li>
+                    <li><a href="#services" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300">Layanan</a></li>
+                    <li><a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300">Tentang Kami</a></li>
+                    <li><a href="#testimonials" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300">Testimoni</a></li>
+                    <li><a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300">Kontak</a></li>
+                </ul>
+            </nav>
+            
+            <div class="md:hidden">
+                <button class="text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section pt-28 pb-16 flex items-center">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">Solusi Terbaik untuk Perbaikan Peralatan Rumah Tangga Anda</h1>
+                    <p class="text-blue-100 mt-6 text-lg">Saya menyediakan layanan perbaikan profesional untuk kompor gas, kipas angin, kulkas, setrika, dan mesin cuci dengan pengalaman bertahun-tahun.</p>
+                    <div class="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#services" class="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 text-center">Lihat Layanan</a>
+                        <a href="#contact" class="bg-transparent border-2 border-white text-white font-medium py-3 px-6 rounded-lg hover:bg-white hover:text-blue-700 transition duration-300 text-center">Hubungi Kami</a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="relative">
+                        <div class="animate-float">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-64 h-64 mx-auto text-white opacity-20" fill="none" stroke="currentColor" stroke-width="1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                <circle cx="12" cy="9" r="4" fill="currentColor" fill-opacity="0.3" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold section-title" data-aos="fade-up">Layanan Servis Saya</h2>
+                <p class="mt-6 text-gray-600" data-aos="fade-up" data-aos-delay="100">Saya menyediakan berbagai layanan perbaikan untuk peralatan rumah tangga Anda dengan garansi kualitas dan harga terjangkau</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Kompor Gas -->
+                <div class="service-card bg-white p-8" data-aos="fade-up" data-aos-delay="150">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-fire service-icon"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Servis Kompor Gas</h3>
+                    <p class="text-gray-600 text-center">Perbaikan berbagai jenis kompor gas, pembersihan saluran gas, perbaikan kerusakan pemantik, dan penggantian sparepart.</p>
+                    <div class="mt-8">
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="progress-bar" data-width="90%"></div>
+                        </div>
+                        <div class="flex justify-between mt-2 text-sm">
+                            <span>Tingkat Keberhasilan</span>
+                            <span class="font-semibold">90%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kipas Angin -->
+                <div class="service-card bg-white p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-fan service-icon"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Servis Kipas Angin</h3>
+                    <p class="text-gray-600 text-center">Perbaikan motor kipas yang rusak, penggantian kapasitor, pembersihan debu dalam mesin, dan perbaikan sistem pengatur kecepatan.</p>
+                    <div class="mt-8">
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="progress-bar" data-width="95%"></div>
+                        </div>
+                        <div class="flex justify-between mt-2 text-sm">
+                            <span>Tingkat Keberhasilan</span>
+                            <span class="font-semibold">95%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kulkas -->
+                <div class="service-card bg-white p-8" data-aos="fade-up" data-aos-delay="250">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-snowflake service-icon"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Servis Kulkas</h3>
+                    <p class="text-gray-600 text-center">Perbaikan sistem pendingin, perbaikan kebocoran freon, penggantian kompressor, dan perbaikan kerusakan thermostat.</p>
+                    <div class="mt-8">
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="progress-bar" data-width="85%"></div>
+                        </div>
+                        <div class="flex justify-between mt-2 text-sm">
+                            <span>Tingkat Keberhasilan</span>
+                            <span class="font-semibold">85%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Setrika -->
+                <div class="service-card bg-white p-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-tshirt service-icon"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Servis Setrika</h3>
+                    <p class="text-gray-600 text-center">Perbaikan elemen pemanas, penggantian kabel, perbaikan thermostat, dan penanganan masalah uap pada setrika uap.</p>
+                    <div class="mt-8">
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="progress-bar" data-width="97%"></div>
+                        </div>
+                        <div class="flex justify-between mt-2 text-sm">
+                            <span>Tingkat Keberhasilan</span>
+                            <span class="font-semibold">97%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mesin Cuci -->
+                <div class="service-card bg-white p-8" data-aos="fade-up" data-aos-delay="350">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-soap service-icon"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Servis Mesin Cuci</h3>
+                    <p class="text-gray-600 text-center">Perbaikan motor, pembuangan air, perbaikan sistem pengering, penggantian belt, dan perbaikan panel kontrol.</p>
+                    <div class="mt-8">
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="progress-bar" data-width="88%"></div>
+                        </div>
+                        <div class="flex justify-between mt-2 text-sm">
+                            <span>Tingkat Keberhasilan</span>
+                            <span class="font-semibold">88%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paket Layanan -->
+                <div class="service-card bg-white p-8" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-tools service-icon"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Paket Maintenance</h3>
+                    <p class="text-gray-600 text-center">Paket perawatan rutin untuk semua peralatan rumah tangga Anda dengan diskon khusus dan prioritas pelayanan.</p>
+                    <div class="mt-8">
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="progress-bar" data-width="100%"></div>
+                        </div>
+                        <div class="flex justify-between mt-2 text-sm">
+                            <span>Kepuasan Pelanggan</span>
+                            <span class="font-semibold">100%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <div class="relative">
+                        <div class="bg-blue-600 absolute top-0 left-0 w-72 h-72 rounded-full opacity-10 -z-10"></div>
+                        <div class="bg-orange-500 absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-10 -z-10"></div>
+                        <div class="p-6 bg-white rounded-lg shadow-lg relative z-10">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="counter-box text-center p-6 bg-blue-50 rounded-lg">
+                                    <div class="text-blue-600 text-4xl font-bold mb-2 counter" data-target="250">0</div>
+                                    <p class="text-gray-700">Pelanggan Puas</p>
+                                </div>
+                                <div class="counter-box text-center p-6 bg-orange-50 rounded-lg">
+                                    <div class="text-orange-600 text-4xl font-bold mb-2 counter" data-target="15">0</div>
+                                    <p class="text-gray-700">Tahun Pengalaman</p>
+                                </div>
+                                <div class="counter-box text-center p-6 bg-green-50 rounded-lg">
+                                    <div class="text-green-600 text-4xl font-bold mb-2 counter" data-target="250">0</div>
+                                    <p class="text-gray-700">Proyek Selesai</p>
+                                </div>
+                                <div class="counter-box text-center p-6 bg-purple-50 rounded-lg">
+                                    <div class="text-purple-600 text-4xl font-bold mb-2">1</div>
+                                    <p class="text-gray-700">Teknisi Berpengalaman</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <h2 class="text-3xl font-bold section-title text-left">Tentang ElektroServis</h2>
+                    <p class="mt-6 text-gray-600">ElektroServis adalah jasa perbaikan peralatan rumah tangga yang dikelola secara individu dengan pengalaman lebih dari 15 tahun dalam industri ini. Saya mengutamakan kualitas, kejujuran, dan kepuasan pelanggan.</p>
+                    
+                    <div class="mt-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-3 icon-box">
+                                <i class="fas fa-check-circle text-blue-600"></i>
+                            </div>
+                            <span class="text-gray-700">Teknisi berpengalaman dan tersertifikasi</span>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-3 icon-box">
+                                <i class="fas fa-clock text-blue-600"></i>
+                            </div>
+                            <span class="text-gray-700">Layanan cepat dan tepat waktu</span>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-3 icon-box">
+                                <i class="fas fa-shield-alt text-blue-600"></i>
+                            </div>
+                            <span class="text-gray-700">Garansi untuk semua perbaikan</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-3 icon-box">
+                                <i class="fas fa-hand-holding-usd text-blue-600"></i>
+                            </div>
+                            <span class="text-gray-700">Harga transparan tanpa biaya tersembunyi</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">Konsultasi Gratis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Process Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold section-title" data-aos="fade-up">Proses Kerja Saya</h2>
+                <p class="mt-6 text-gray-600" data-aos="fade-up" data-aos-delay="100">Saya menerapkan pendekatan sistematis untuk memastikan kualitas perbaikan dan kepuasan pelanggan</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="text-center p-6 relative" data-aos="fade-up" data-aos-delay="150">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 service-icon">
+                        <i class="fas fa-phone-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Permintaan Servis</h3>
+                    <p class="text-gray-600">Hubungi saya melalui telepon atau WhatsApp untuk menjadwalkan kunjungan</p>
+                    
+                    <div class="hidden md:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2">
+                        <svg width="40" height="15" viewBox="0 0 40 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 7.5L25 0.541196L25 14.4588L40 7.5Z" fill="#E2E8F0"/>
+                            <line x1="0" y1="7.5" x2="25" y2="7.5" stroke="#E2E8F0" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="text-center p-6 relative" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 service-icon">
+                        <i class="fas fa-search text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Diagnosis</h3>
+                    <p class="text-gray-600">Saya akan mendiagnosis masalah dengan peralatan Anda</p>
+                    
+                    <div class="hidden md:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2">
+                        <svg width="40" height="15" viewBox="0 0 40 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 7.5L25 0.541196L25 14.4588L40 7.5Z" fill="#E2E8F0"/>
+                            <line x1="0" y1="7.5" x2="25" y2="7.5" stroke="#E2E8F0" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="text-center p-6 relative" data-aos="fade-up" data-aos-delay="250">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 service-icon">
+                        <i class="fas fa-wrench text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Perbaikan</h3>
+                    <p class="text-gray-600">Proses perbaikan dilakukan secara profesional oleh saya sendiri</p>
+                    
+                    <div class="hidden md:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2">
+                        <svg width="40" height="15" viewBox="0 0 40 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 7.5L25 0.541196L25 14.4588L40 7.5Z" fill="#E2E8F0"/>
+                            <line x1="0" y1="7.5" x2="25" y2="7.5" stroke="#E2E8F0" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="text-center p-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 service-icon">
+                        <i class="fas fa-check-circle text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Selesai & Garansi</h3>
+                    <p class="text-gray-600">Perbaikan selesai dengan garansi dan layanan purna jual</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold section-title" data-aos="fade-up">Apa Kata Pelanggan Saya</h2>
+                <p class="mt-6 text-gray-600" data-aos="fade-up" data-aos-delay="100">Testimoni dari pelanggan yang telah menggunakan jasa saya</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="150">
+                    <div class="flex items-center mb-4">
+                        <div class="text-orange-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Saya sangat puas dengan layanan perbaikan kulkas dari ElektroServis. Teknisi datang tepat waktu, profesional, dan kulkas saya kembali dingin seperti baru."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-blue-600 font-semibold">BS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Budi Santoso</h4>
+                            <p class="text-sm text-gray-500">Jakarta Selatan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-orange-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Mesin cuci saya rusak dan tidak bisa mengeringkan. Setelah diservis oleh ElektroServis, sekarang berfungsi dengan sempurna. Harga juga sangat terjangkau!"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-blue-600 font-semibold">RA</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Rina Andriani</h4>
+                            <p class="text-sm text-gray-500">Tangerang</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="250">
+                    <div class="flex items-center mb-4">
+                        <div class="text-orange-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Kompor gas saya sering mati sendiri, tapi setelah diperbaiki oleh teknisi dari ElektroServis, masalah teratasi. Mereka juga memberi tips cara merawat kompor. Terima kasih!"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-blue-600 font-semibold">DP</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Denny Pratama</h4>
+                            <p class="text-sm text-gray-500">Bekasi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-blue-700">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto" data-aos="zoom-in">
+                <h2 class="text-3xl font-bold text-white mb-6">Punya Masalah dengan Peralatan Rumah Tangga Anda?</h2>
+                <p class="text-blue-100 mb-10">Jangan khawatir! Saya siap membantu memperbaiki dan mengembalikan peralatan Anda agar berfungsi seperti baru kembali.</p>
+                <a href="https://wa.me/6285728748711" class="whatsapp-button inline-flex items-center py-3 px-8 rounded-lg font-medium text-lg">
+                    <i class="fab fa-whatsapp mr-2 text-2xl"></i>
+                    Hubungi via WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold section-title" data-aos="fade-up">Hubungi Saya</h2>
+                <p class="mt-6 text-gray-600" data-aos="fade-up" data-aos-delay="100">Untuk informasi lebih lanjut atau permintaan layanan, silakan hubungi saya melalui kontak di bawah ini</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div data-aos="fade-right">
+                    <form id="contactForm" class="bg-white p-8 rounded-lg shadow-lg">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" placeholder="Masukkan nama lengkap Anda" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">No. Telepon</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" placeholder="Masukkan nomor telepon Anda" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="service" class="block text-gray-700 font-medium mb-2">Layanan yang Dibutuhkan</label>
+                            <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" required>
+                                <option value="">Pilih Layanan</option>
+                                <option value="kompor">Servis Kompor Gas</option>
+                                <option value="kipas">Servis Kipas Angin</option>
+                                <option value="kulkas">Servis Kulkas</option>
+                                <option value="setrika">Servis Setrika</option>
+                                <option value="mesin_cuci">Servis Mesin Cuci</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="mb-8">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Pesan</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300" placeholder="Jelaskan masalah yang Anda alami" required></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 transform hover:scale-105">Kirim Pesan</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div data-aos="fade-left">
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg h-full">
+                        <h3 class="text-xl font-semibold mb-6">Informasi Kontak</h3>
+                        
+                        <div class="mb-6 flex items-start">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 mt-1">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 mb-1">Alamat</h4>
+                                <p class="text-gray-600">Jl. Sri Sadono No 4 Ngenden Rt 4/08, Gentan, Baki, Sukoharjo<br><span class="text-sm text-gray-500">(sebelah utara pas Masjid Aly Basya)</span></p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6 flex items-start">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 mt-1">
+                                <i class="fas fa-phone-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 mb-1">Telepon</h4>
+                                <p class="text-gray-600">(+62) 857 2874 8711</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6 flex items-start">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 mt-1">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 mb-1">Email</h4>
+                                <p class="text-gray-600">info@elektroservis.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8 flex items-start">
+                            <div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 mt-1">
+                                <i class="fas fa-clock text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 mb-1">Jam Operasional</h4>
+                                <p class="text-gray-600">Senin - Sabtu : 08.00 - 16.00, kecuali darurat</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-gray-800 mb-4">Ikuti Kami</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-blue-400 text-white rounded-full flex items-center justify-center hover:bg-blue-500 transition duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-pink-600 text-white rounded-full flex items-center justify-center hover:bg-pink-700 transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center hover:bg-red-700 transition duration-300">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center" data-aos="fade-up">
+                <a href="https://wa.me/6285728748711" class="inline-flex items-center whatsapp-button py-3 px-8 rounded-lg text-lg font-medium">
+                    <i class="fab fa-whatsapp mr-2 text-2xl"></i>
+                    Chat dengan Kami di WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Elektro<span class="text-orange-500">Servis</span></h3>
+                    <p class="text-gray-400 mb-6">Solusi terpercaya untuk perbaikan peralatan rumah tangga Anda dengan teknisi berpengalaman dan bergaransi.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Layanan Kami</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Servis Kompor Gas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Servis Kipas Angin</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Servis Kulkas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Servis Setrika</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Servis Mesin Cuci</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Paket Maintenance</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Tautan Cepat</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Beranda</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Layanan</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">Tentang Kami</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition duration-300">Testimoni</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Kontak</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Hubungi Kami</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-orange-500 mt-1 mr-3"></i>
+                            <span class="text-gray-400">Jl. Sri Sadono No 4 Ngenden Rt 4/08, Gentan, Baki, Sukoharjo<br><span class='text-sm text-gray-500'>(sebelah utara pas Masjid Aly Basya)</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt text-orange-500 mt-1 mr-3"></i>
+                            <span class="text-gray-400">(+62) 857 2874 8711</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-orange-500 mt-1 mr-3"></i>
+                            <span class="text-gray-400">info@elektroservis.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock text-orange-500 mt-1 mr-3"></i>
+                            <span class="text-gray-400">Senin - Sabtu : 08.00 - 16.00, kecuali darurat</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 ElektroServis. Hak Cipta Dilindungi.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition duration-300">Syarat & Ketentuan</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition duration-300">Kebijakan Privasi</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tambahkan Google Maps -->
+            <div class="mt-8">
+                <iframe src="https://www.google.com/maps?q=Jl.+Sri+Sadono+No+4+Ngenden+Rt+4%2F08%2C+Gentan%2C+Baki%2C+Sukoharjo&output=embed" width="100%" height="250" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6285728748711" class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition duration-300 z-50">
+        <i class="fab fa-whatsapp text-white text-3xl"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 left-6 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition duration-300 z-50 opacity-0">
+        <i class="fas fa-arrow-up text-white"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="elektroservis.js"></script>
+</body>
+</html>
